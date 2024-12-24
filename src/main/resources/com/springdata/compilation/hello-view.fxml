@@ -15,10 +15,21 @@
     <left>
         <VBox spacing="10" alignment="CENTER" prefWidth="150" style="-fx-background-color: #d3d3d3; -fx-padding: 10;">
             <Button text="Add State" onAction="#onAddStateClick"/>
-            <Button text="Add Transition" onAction="#onAddTransitionClick"/>
+            <Button text="Add Transition" fx:id="addTransitionButton" onAction="#onAddTransitionClick"/>
+            <TextField fx:id="transitionsymbolfield" text="Symbol here..."></TextField>
             <Button text="Clear" onAction="#onClearClick"/>
+            <Label>Enter Strings to Test</Label>
+            <TextField text="word here..."></TextField>
         </VBox>
     </left>
+    <right>
+        <VBox spacing="10" alignment="CENTER" prefWidth="150" style="-fx-background-color: #d3d3d3; -fx-padding: 10;">
+            <Label fx:id="statecount"> -State count- </Label>
+            <Label fx:id="transitioncount"> -Transition count- </Label>
+            <Label fx:id="detailsText"> details</Label>
+
+        </VBox>
+    </right>
 
     <!-- Main Pane (center) -->
     <center>

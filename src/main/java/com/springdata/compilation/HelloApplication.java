@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:src/main/resources/automation.png"));
         stage.show();
+        System.out.println("Starting Application ................................................");
 
     }
 

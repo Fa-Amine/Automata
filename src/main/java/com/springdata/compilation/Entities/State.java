@@ -48,4 +48,17 @@ public class State extends Group {
     public Label getLabel() {
         return label;
     }
+    // Method to get the width of the state (circle diameter)
+    public double getWidth() {
+        return circle.getRadius() * 2;
+    }
+
+    // Method to get the height of the state (circle diameter)
+    public double getHeight() {
+        return circle.getRadius() * 2;
+    }
+    public double getRadius() {
+        return this.circle.getRadius();
+    }
+
 }
