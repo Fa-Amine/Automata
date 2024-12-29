@@ -12,10 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import org.w3c.dom.events.MouseEvent;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class HelloController {
     @FXML
@@ -42,7 +39,9 @@ public class HelloController {
                 if (symbol.isEmpty() || symbol.equals("Symbol here...")) {
                     symbol = "ε";
                 }
-                createTransition(selectedSourceState, selectedTargetState, symbol);
+                Transition transition = new Transition(selectedSourceState, selectedTargetState, symbol);
+                mainPane.getChildren().add(transition);
+                selectedSourceState.transitions.put(transition,symbol.charAt(0));
 
 
                 clearSelections();
@@ -52,8 +51,7 @@ public class HelloController {
 
 
     private void createTransition(State source, State target, String label) {
-        Transition transition = new Transition(source, target, label);
-        mainPane.getChildren().add(transition);
+
     }
 
 

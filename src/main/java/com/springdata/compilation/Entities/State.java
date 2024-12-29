@@ -7,9 +7,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class State extends Group {
     private final Circle circle;
     private final Label label;
+    public static Map<Transition, Character> transitions = new HashMap<>();
 
     public State(String name, double x, double y, double radius) {
 
@@ -50,15 +56,22 @@ public class State extends Group {
     }
     // Method to get the width of the state (circle diameter)
     public double getWidth() {
-        return circle.getRadius() * 2;
+        return getRadius() * 2;
     }
 
-    // Method to get the height of the state (circle diameter)
     public double getHeight() {
-        return circle.getRadius() * 2;
+        return getRadius() * 2;
     }
     public double getRadius() {
         return this.circle.getRadius();
     }
+
+    public double getpositionX(){
+        return this.circle.getLayoutX();
+    }
+    public double getpositionY(){
+        return this.circle.getLayoutY();
+    }
+
 
 }

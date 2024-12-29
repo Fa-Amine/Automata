@@ -14,6 +14,8 @@ public class Transition extends Group {
     private State fromState;
     private State toState;
 
+    private final double shift = 50.0;
+
     public Transition(State fromState, State toState, String labelText) {
         this.fromState = fromState;
         this.toState = toState;
@@ -34,31 +36,32 @@ public class Transition extends Group {
 
         getChildren().addAll(line, arrowHead, label);
 
-        // Bind the transition to the positions of the states
         updateTransition();
         bindTransition();
     }
 
     private void updateTransition() {
 
-        double startX = fromState.getLayoutX() + fromState.getWidth() / 2;
-        double startY = fromState.getLayoutY() + fromState.getHeight() / 2;
-        double endX = toState.getLayoutX() + toState.getWidth() / 2;
-        double endY = toState.getLayoutY() + toState.getHeight() / 2;
 
+        double startX = fromState.getBoundsInParent().getCenterX();
+        double startY = fromState.getBoundsInParent().getCenterY();
+        double endX = toState.getBoundsInParent().getCenterX();
+        double endY = toState.getBoundsInParent().getCenterY();
 
         line.setStartX(startX);
         line.setStartY(startY);
         line.setEndX(endX);
         line.setEndY(endY);
 
-
         updateArrowHead(startX, startY, endX, endY);
 
-
-        label.setX((startX + endX) / 2);
+        label.setX((startX + endX) / 2 - label.getBoundsInLocal().getWidth() / 2);
         label.setY((startY + endY) / 2 - 10);
     }
+
+
+
+
 
     private void updateArrowHead(double startX, double startY, double endX, double endY) {
         double arrowLength = 10;
