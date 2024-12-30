@@ -1,12 +1,18 @@
 package com.springdata.compilation;
 
+import com.springdata.compilation.Entities.State;
+import com.springdata.compilation.Entities.Transition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HelloApplication extends Application {
     @Override

@@ -7,6 +7,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Transition extends Group {
     private Line line;
     private Polygon arrowHead;
@@ -40,7 +43,7 @@ public class Transition extends Group {
         bindTransition();
     }
 
-    private void updateTransition() {
+    public void updateTransition() {
 
 
         double startX = fromState.getBoundsInParent().getCenterX();
@@ -89,4 +92,24 @@ public class Transition extends Group {
         toState.layoutXProperty().addListener((obs, oldVal, newVal) -> updateTransition());
         toState.layoutYProperty().addListener((obs, oldVal, newVal) -> updateTransition());
     }
+    public State getFromState() {
+        return fromState;
+    }
+
+    public State getToState() {
+        return toState;
+    }
+    public void shiftLabel(double offset) {
+        // Apply offset to the label's Y position
+        label.setLayoutY(label.getY() + offset);
+
+        // Apply the same offset to the line (start and end points)
+        line.setStartY(line.getStartY() + offset);  // Shift the start Y
+        line.setEndY(line.getEndY() + offset);      // Shift the end Y
+
+        // Apply the offset to the arrowhead's Y position
+        arrowHead.setLayoutY(arrowHead.getLayoutY() + offset);
+    }
+
+
 }
