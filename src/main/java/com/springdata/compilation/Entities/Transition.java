@@ -41,22 +41,20 @@ public class Transition extends Group {
 
     private void updateTransition() {
 
-        double startX = fromState.getLayoutX() + fromState.getWidth() / 2;
-        double startY = fromState.getLayoutY() + fromState.getHeight() / 2;
-        double endX = toState.getLayoutX() + toState.getWidth() / 2;
-        double endY = toState.getLayoutY() + toState.getHeight() / 2;
-
+        double startX = fromState.getBoundsInParent().getCenterX() + fromState.getRadius();
+        double startY = fromState.getBoundsInParent().getCenterY();
+        double endX = toState.getBoundsInParent().getCenterX() - fromState.getRadius();
+        double endY = toState.getBoundsInParent().getCenterY();
 
         line.setStartX(startX);
         line.setStartY(startY);
         line.setEndX(endX);
         line.setEndY(endY);
 
-
         updateArrowHead(startX, startY, endX, endY);
 
-
-        label.setX((startX + endX) / 2);
+        // Label positioning adjusted to the midpoint of the line, but considering potential shifts
+        label.setX((startX + endX) / 2 - label.getBoundsInLocal().getWidth() / 2);
         label.setY((startY + endY) / 2 - 10);
     }
 
